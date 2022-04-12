@@ -45,18 +45,29 @@ class Cidades {
 
     }
 
+    public function fDelete($y) {
+        include_once('./conexao.php');
+   
+        $query = $conexao->prepare("DELETE FROM cidades WHERE id=:x");
+        $deleta = $query->execute(['x'=>$y]);
+        // deleta da tabela cidades onde o id da tabela seja igual a variavel x (criada agora)
+        // executa a query e diz que o X vai receber o parametro $y
+        // retorno o delete
+        return $deleta;
+    }
+
 
 }
 
 $cidade1 = new Cidades();
 
-$cidade1->setNome('Carazinho');
-$cidade1->setUF('RS');
-$cidade1->update(2);
+//$cidade1->setNome('Carazinho');
+//$cidade1->setUF('RS');
+//$cidade1->update(2);
 
-echo $cidade1->setData();
+//echo $cidade1->setData();
 
-
+echo $cidade1->fDelete(2); 
 
 
 
